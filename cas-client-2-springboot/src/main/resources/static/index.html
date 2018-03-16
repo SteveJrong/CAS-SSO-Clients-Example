@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>cas-client-2</title>
+	</head>
+	<body>
+		<p>您已成功登录 cas-client-2 系统。</p>
+		<table border="1">
+			<tr>
+				<th colspan="6">用户信息</th>
+			</tr>
+			<tr>
+				<th>用户ID</th>
+				<th>用户全名</th>
+				<th>用户密码</th>
+				<th>用户性别</th>
+				<th>用户年龄</th>
+				<th>用户创建日期</th>
+			</tr>
+			<tr>
+				<td th:text="${currentUser.userIdentity}"></td>
+				<td th:text="${currentUser.userFullName}"></td>
+				<td th:text="${currentUser.userPassword}"></td>
+				<td th:text="${currentUser.userGender}"></td>
+				<td th:text="${currentUser.userAge}"></td>
+				<td th:text="${currentUser.userCreateDate}"></td>
+			</tr>
+		</table>
+	</body>
+</html>

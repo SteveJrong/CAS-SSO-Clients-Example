@@ -1,0 +1,47 @@
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'application'
+
+// buildscript块声明Gradle在初始编译时所需的最基本的依赖项
+buildscript {
+	// 设置在构建项目时的软件源库
+    repositories {
+    	maven { url "https://repo.spring.io/libs-snapshot" }
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
+    }
+    
+    // 设置引用在构建项目时的插件
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.8.RELEASE") // 适用于Spring Boot项目的Gradle管理插件
+        classpath("se.transmode.gradle:gradle-docker:1.2")
+    }
+}
+
+sourceCompatibility = 1.8 // 指定编译时的JDK版本
+targetCompatibility = 1.8 // 指定确保class文件与targetCompatibility指定版本，或者更新的java虚拟机兼容版本
+
+group 'com.cas.client' // 设置用于Docker打包时镜像的组织
+archivesBaseName = 'cas-client-1-springboot-app' // 设置用于Jar包的最终名称
+version = '1.0-SNAPSHOT' // 设置用于Jar包的最终版本号
+
+// 设置用于项目的软件源库
+repositories {
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public" }
+}
+
+// 设置项目的依赖
+dependencies {
+	compile("org.springframework.boot:spring-boot-starter-web")
+	compile("org.springframework.boot:spring-boot-starter-aop")
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '1.5.8.RELEASE'
+	compile group: 'org.apache.shiro', name: 'shiro-spring', version: '1.2.4'
+	compile group: 'org.apache.shiro', name: 'shiro-ehcache', version: '1.2.4'
+	compile group: 'org.apache.shiro', name: 'shiro-cas', version: '1.2.4'
+	compile group: 'net.sourceforge.nekohtml', name: 'nekohtml', version: '1.9.22'
+	// compile group: 'net.unicon.cas', name: 'cas-client-autoconfig-support', version: '1.5.0-GA'
+	compile group: 'com.alibaba', name: 'fastjson', version: '1.2.45'
+	
+	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.5'
+	compile group: 'commons-httpclient', name: 'commons-httpclient', version: '3.1'
+}

@@ -1,0 +1,36 @@
+server:
+  port: 8082
+  address: cas.client.com
+  ssl:
+    enabled: false
+  
+spring:
+  thymeleaf:
+    prefix: classpath:/static/
+    suffix: .html
+    encoding: UTF-8
+    cache: false
+    mode: LEGACYHTML5
+  aop:
+    auto: true
+    
+#cas:
+#  server-url-prefix: https://cas.server.com:8443/cas/
+#  server-login-url: https://cas.server.com:8443/cas/login
+#  client-host-url: http://cas.client.com:8081
+#  validation-type: cas
+
+#cas-server-config: 
+#  casServerDomainUrl: https://cas.server.com:8443/
+#  casServerRootPrefix: cas/
+#  casServerLoginPrefix: login/
+#  casServerLogoutPrefix: logout
+#  
+#cas-client-config: 
+#  casClientDomainUrl: http://cas.client.com:${server.port}/
+#  casClientRootPrefix: 
+
+#shiroFilter: 
+#  filterChainDefinitionMap: 
+#    /home: anon
+#    /**: authc
